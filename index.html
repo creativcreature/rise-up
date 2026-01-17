@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise Up — Mom's Path Forward</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Atlanta Falcons Colors */
+            --falcons-red: #A71930;
+            --falcons-black: #000000;
+            --falcons-silver: #A5ACAF;
+            --falcons-white: #FFFFFF;
+
+            /* Extended palette */
+            --red-dark: #8B1528;
+            --red-glow: rgba(167, 25, 48, 0.3);
+            --silver-dim: rgba(165, 172, 175, 0.2);
+            --silver-bright: #CBD0D2;
+            --success: #2d6a4f;
+            --warning: #e07b39;
+            --info: #3d5a80;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; overflow: hidden; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%);
+            color: var(--falcons-white);
+        }
+
+        /* Falcons-style Headers */
+        .display-font {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Layout */
+        .app { display: grid; grid-template-columns: 220px 1fr 300px; height: 100vh; }
+
+        /* Left Sidebar */
+        .sidebar {
+            background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--silver-dim);
+        }
+
+        .brand {
+            text-align: center;
+            padding: 1.25rem 0;
+            border-bottom: 2px solid var(--falcons-red);
+            margin-bottom: 1.5rem;
+        }
+        .brand-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--falcons-red);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 30px var(--red-glow);
+        }
+        .brand-tagline {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: var(--falcons-silver);
+            margin-top: 0.25rem;
+        }
+
+        /* Client Switcher */
+        .client-switcher { margin-bottom: 1.5rem; }
+        .client-btn {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 0.35rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--silver-dim);
+            color: var(--falcons-silver);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+        .client-btn.active {
+            background: var(--falcons-red);
+            color: var(--falcons-white);
+            border-color: var(--falcons-red);
+            box-shadow: 0 0 20px var(--red-glow);
+        }
+        .client-btn:hover:not(.active) {
+            background: rgba(167, 25, 48, 0.2);
+            border-color: var(--falcons-red);
+        }
+
+        .nav-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--falcons-red);
+            margin: 1.25rem 0 0.75rem;
+        }
+
+        .nav-btn {
+            display: block;
+            width: 100%;
+            padding: 0.7rem 0.75rem;
+            background: transparent;
+            border: none;
+            color: var(--falcons-silver);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-bottom: 2px;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--falcons-white);
+            border-left-color: var(--falcons-silver);
+        }
+        .nav-btn.active {
+            background: var(--falcons-red);
+            color: var(--falcons-white);
+            border-left-color: var(--falcons-white);
+        }
+
+        .quick-calls {
+            margin-top: auto;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--silver-dim);
+        }
+        .call-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 0.4rem;
+            background: var(--falcons-red);
+            border: none;
+            color: var(--falcons-white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .call-btn:hover {
+            background: var(--red-dark);
+            box-shadow: 0 0 20px var(--red-glow);
+        }
+        .call-btn.silver {
+            background: var(--falcons-silver);
+            color: var(--falcons-black);
+        }
+        .call-btn.silver:hover {
+            background: var(--silver-bright);
+        }
+
+        /* Main Content */
+        .main { display: flex; flex-direction: column; overflow: hidden; }
+
+        .header {
+            padding: 1.25rem 1.5rem;
+            background: rgba(0,0,0,0.5);
+            border-bottom: 2px solid var(--falcons-red);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .header-client {
+            font-size: 0.7rem;
+            color: var(--falcons-red);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .content { flex: 1; overflow-y: auto; padding: 1.5rem; }
+        .panel { display: none; }
+        .panel.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Right Context Panel */
+        .context-panel {
+            background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+            border-left: 1px solid var(--silver-dim);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Next Action - Hero Card */
+        .next-action {
+            background: linear-gradient(135deg, var(--falcons-red) 0%, var(--red-dark) 100%);
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .next-action::before {
+            content: 'RISE UP';
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%) rotate(-90deg);
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(0,0,0,0.15);
+            letter-spacing: 0.1em;
+        }
+        .next-action-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+        .next-action-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .next-action-desc { font-size: 0.8rem; opacity: 0.9; margin-bottom: 1rem; line-height: 1.4; }
+        .next-action-cta {
+            display: inline-block;
+            padding: 0.6rem 1.25rem;
+            background: var(--falcons-white);
+            color: var(--falcons-red);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .next-action-cta:hover {
+            background: var(--falcons-black);
+            color: var(--falcons-white);
+        }
+
+        /* Deadline Alert */
+        .deadline-alert {
+            background: var(--warning);
+            color: var(--falcons-black);
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .deadline-alert.safe { background: var(--success); color: var(--falcons-white); }
+        .deadline-days {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .deadline-text { font-size: 0.8rem; line-height: 1.3; }
+        .deadline-none {
+            padding: 1rem 1.25rem;
+            background: rgba(255,255,255,0.03);
+            font-size: 0.8rem;
+            color: var(--falcons-silver);
+            border-bottom: 1px solid var(--silver-dim);
+        }
+
+        .context-section { padding: 1.25rem; border-bottom: 1px solid var(--silver-dim); }
+        .context-section:last-child { border-bottom: none; flex: 1; overflow-y: auto; }
+        .context-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--falcons-red);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Status Rows */
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.85rem;
+        }
+        .status-badge {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.5rem;
+        }
+        .status-badge.urgent { background: var(--falcons-red); }
+        .status-badge.progress { background: var(--falcons-silver); color: var(--falcons-black); }
+        .status-badge.pending { background: var(--info); }
+        .status-badge.denied { background: var(--warning); color: var(--falcons-black); }
+        .status-badge.done { background: var(--success); }
+
+        /* Activity Feed */
+        .activity-item { padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .activity-date { font-size: 0.65rem; color: var(--falcons-red); margin-bottom: 0.2rem; font-family: 'Oswald', sans-serif; letter-spacing: 0.05em; }
+        .activity-text { font-size: 0.8rem; color: var(--falcons-silver); }
+
+        /* Dashboard Grid */
+        .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+        .dash-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--silver-dim);
+            padding: 1.25rem;
+            position: relative;
+        }
+        .dash-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--falcons-red);
+        }
+        .dash-card-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--silver-dim);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dash-card.full { grid-column: span 2; }
+
+        /* Progress Bar */
+        .progress-section { margin-bottom: 1.5rem; }
+        .progress-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; align-items: baseline; }
+        .progress-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--falcons-silver);
+        }
+        .progress-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--falcons-red);
+        }
+        .progress-bar {
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--falcons-red) 0%, #d42743 100%);
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px var(--red-glow);
+        }
+
+        /* Action Items */
+        .action-list { display: flex; flex-direction: column; gap: 0.5rem; max-height: 320px; overflow-y: auto; }
+        .action-item {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.85rem;
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--falcons-red);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .action-item.week { border-color: var(--falcons-silver); }
+        .action-item.month { border-color: var(--info); }
+        .action-item.done { border-color: var(--success); opacity: 0.5; }
+        .action-item:hover {
+            background: rgba(167, 25, 48, 0.15);
+            transform: translateX(4px);
+        }
+        .action-check {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--falcons-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            flex-shrink: 0;
+        }
+        .action-item.done .action-check { background: var(--success); border-color: var(--success); }
+        .action-content { flex: 1; min-width: 0; }
+        .action-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        .action-item.done .action-title { text-decoration: line-through; }
+        .action-meta { font-size: 0.75rem; color: var(--falcons-silver); }
+        .action-call {
+            padding: 0.35rem 0.75rem;
+            background: var(--falcons-red);
+            color: var(--falcons-white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+        .action-call:hover {
+            background: var(--falcons-white);
+            color: var(--falcons-red);
+        }
+
+        /* Benefits Tracker */
+        .benefit-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+        .benefit-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--silver-dim);
+            padding: 1.25rem;
+            position: relative;
+        }
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--falcons-silver);
+        }
+        .benefit-card.has-deadline::before { background: var(--warning); }
+        .benefit-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .benefit-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .benefit-deadline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            background: var(--warning);
+            color: var(--falcons-black);
+            padding: 0.25rem 0.6rem;
+            font-weight: 600;
+        }
+        .benefit-field { margin-bottom: 0.75rem; }
+        .benefit-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--falcons-silver);
+            margin-bottom: 0.25rem;
+        }
+        .benefit-input, .benefit-select {
+            width: 100%;
+            padding: 0.6rem;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--silver-dim);
+            color: var(--falcons-white);
+            font-family: inherit;
+            font-size: 0.85rem;
+        }
+        .benefit-input:focus, .benefit-select:focus { outline: none; border-color: var(--falcons-red); }
+
+        /* Documents */
+        .doc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; }
+        .doc-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.3);
+            cursor: pointer;
+            border-left: 4px solid var(--falcons-silver);
+            transition: all 0.2s;
+        }
+        .doc-item:hover {
+            background: rgba(167, 25, 48, 0.15);
+            transform: translateX(4px);
+        }
+        .doc-check {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--falcons-silver);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .doc-item.have { border-color: var(--success); }
+        .doc-item.have .doc-check { background: var(--success); border-color: var(--success); }
+        .doc-item.need { border-color: var(--falcons-red); }
+        .doc-item.need .doc-check { border-color: var(--falcons-red); }
+        .doc-item.applied { border-color: var(--warning); }
+        .doc-item.applied .doc-check { border-color: var(--warning); background: var(--warning); color: var(--falcons-black); }
+        .doc-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .doc-status { font-size: 0.7rem; color: var(--falcons-silver); margin-top: 0.15rem; }
+
+        /* Contacts */
+        .contact-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+        .contact-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--silver-dim);
+            padding: 1.25rem;
+            border-top: 3px solid var(--falcons-red);
+        }
+        .contact-role {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--falcons-red);
+            margin-bottom: 0.25rem;
+        }
+        .contact-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        .contact-org { font-size: 0.8rem; color: var(--falcons-silver); margin-bottom: 0.75rem; }
+        .contact-phone {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--falcons-red);
+            color: var(--falcons-white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+        }
+        .contact-last { font-size: 0.75rem; color: var(--falcons-silver); }
+
+        /* Activity Log */
+        .log-form { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .log-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.75rem;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--silver-dim);
+            color: var(--falcons-white);
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+        .log-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--falcons-red);
+            border: none;
+            color: var(--falcons-white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+        }
+        .log-select {
+            padding: 0.75rem;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--silver-dim);
+            color: var(--falcons-white);
+            font-size: 0.85rem;
+        }
+        .log-entries { max-height: 500px; overflow-y: auto; }
+        .log-entry {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid var(--falcons-silver);
+            margin-bottom: 0.5rem;
+        }
+        .log-entry.win { border-left-color: var(--success); background: rgba(45, 106, 79, 0.1); }
+        .log-entry.issue { border-left-color: var(--warning); }
+        .log-entry-header { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .log-entry-date {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            color: var(--falcons-red);
+            letter-spacing: 0.05em;
+        }
+        .log-entry-type {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            background: var(--info);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .log-entry-text { font-size: 0.9rem; color: var(--falcons-silver); line-height: 1.5; }
+
+        /* Profile */
+        .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+        .profile-section {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--silver-dim);
+            padding: 1.25rem;
+            border-top: 3px solid var(--falcons-red);
+        }
+        .profile-section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--silver-dim);
+        }
+        .profile-field { margin-bottom: 1rem; }
+        .profile-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--falcons-silver);
+            margin-bottom: 0.3rem;
+        }
+        .profile-input {
+            width: 100%;
+            padding: 0.6rem;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--silver-dim);
+            color: var(--falcons-white);
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+        .profile-textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 0.6rem;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--silver-dim);
+            color: var(--falcons-white);
+            font-family: inherit;
+            font-size: 0.9rem;
+            resize: vertical;
+        }
+
+        /* Export */
+        .export-btn {
+            padding: 1rem 2rem;
+            background: var(--falcons-red);
+            border: none;
+            color: var(--falcons-white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            margin-bottom: 1.25rem;
+        }
+        .export-preview {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--silver-dim);
+            padding: 1.25rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+            white-space: pre-wrap;
+            max-height: 450px;
+            overflow-y: auto;
+            color: var(--falcons-silver);
+        }
+
+        /* Add Button */
+        .add-btn {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            padding: 0.35rem 0.75rem;
+            background: transparent;
+            border: 1px solid var(--falcons-red);
+            color: var(--falcons-red);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+        }
+        .add-btn:hover { background: var(--falcons-red); color: var(--falcons-white); }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal {
+            background: #111;
+            border: 2px solid var(--falcons-red);
+            padding: 2rem;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 0 50px var(--red-glow);
+        }
+        .modal-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            color: var(--falcons-red);
+        }
+        .modal-field { margin-bottom: 1.25rem; }
+        .modal-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--falcons-silver);
+            margin-bottom: 0.35rem;
+        }
+        .modal-input {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--silver-dim);
+            color: var(--falcons-white);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem; }
+        .modal-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+        }
+        .modal-btn.primary { background: var(--falcons-red); color: var(--falcons-white); }
+        .modal-btn.secondary { background: transparent; border: 1px solid var(--silver-dim); color: var(--falcons-silver); }
+
+        /* Mobile */
+        @media (max-width: 1100px) {
+            .app { grid-template-columns: 1fr; }
+            .sidebar, .context-panel { display: none; }
+            .mobile-bar {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: #0a0a0a;
+                border-top: 2px solid var(--falcons-red);
+                padding: 0.5rem;
+                z-index: 100;
+                justify-content: space-around;
+            }
+            .content { padding-bottom: 5rem; }
+            .dash-grid { grid-template-columns: 1fr; }
+            .dash-card.full { grid-column: span 1; }
+            .profile-grid { grid-template-columns: 1fr; }
+        }
+        @media (min-width: 1101px) {
+            .mobile-bar { display: none; }
+        }
+        .mobile-bar-btn {
+            padding: 0.5rem 0.75rem;
+            background: transparent;
+            border: none;
+            color: var(--falcons-silver);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+        }
+        .mobile-bar-btn.active { color: var(--falcons-red); }
+        .mobile-bar-btn .icon { font-size: 1.25rem; display: block; margin-bottom: 0.2rem; }
+        .mobile-bar-btn.client-toggle { background: var(--falcons-red); color: var(--falcons-white); border-radius: 4px; }
+
+        /* Mobile Menu */
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 200;
+            display: none;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 4rem;
+        }
+        .mobile-menu-overlay.show { display: flex; }
+        .mobile-menu {
+            background: #111;
+            border: 2px solid var(--falcons-red);
+            border-radius: 12px 12px 0 0;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 400px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        .mobile-menu-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: var(--falcons-red);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--silver-dim);
+        }
+        .mobile-menu-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: none;
+            color: var(--falcons-white);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            text-align: left;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .mobile-menu-btn:hover, .mobile-menu-btn:active { background: rgba(167, 25, 48, 0.2); }
+        .mobile-menu-call {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--falcons-red);
+            color: var(--falcons-white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        /* Save indicator */
+        .save-toast {
+            position: fixed;
+            bottom: 5rem;
+            right: 1rem;
+            background: var(--success);
+            padding: 0.6rem 1.25rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 200;
+        }
+        .save-toast.show { opacity: 1; }
+
+        /* Appointments */
+        .appt-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--silver-dim);
+            border-left: 4px solid var(--falcons-red);
+            padding: 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        .appt-card.soon { border-left-color: var(--warning); background: rgba(224, 123, 57, 0.1); }
+        .appt-card.today { border-left-color: var(--falcons-red); background: rgba(167, 25, 48, 0.15); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        .appt-date {
+            font-family: 'Oswald', sans-serif;
+            text-align: center;
+            min-width: 60px;
+        }
+        .appt-day { font-size: 2rem; font-weight: 700; line-height: 1; color: var(--falcons-red); }
+        .appt-month { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--falcons-silver); }
+        .appt-details { flex: 1; }
+        .appt-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+        .appt-meta { font-size: 0.8rem; color: var(--falcons-silver); }
+        .appt-location { font-size: 0.8rem; color: var(--falcons-silver); margin-top: 0.25rem; }
+        .appt-actions { display: flex; gap: 0.5rem; }
+        .appt-done, .appt-delete {
+            padding: 0.4rem 0.75rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+        }
+        .appt-done { background: var(--success); color: white; }
+        .appt-delete { background: transparent; border: 1px solid var(--silver-dim); color: var(--falcons-silver); }
+
+        /* Delete buttons */
+        .delete-btn {
+            padding: 0.25rem 0.5rem;
+            background: transparent;
+            border: 1px solid var(--silver-dim);
+            color: var(--falcons-silver);
+            font-size: 0.7rem;
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+        .delete-btn:hover { background: var(--warning); color: var(--falcons-black); border-color: var(--warning); }
+
+        /* Urgency indicator */
+        .urgency-badge {
+            display: inline-block;
+            padding: 0.15rem 0.4rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: var(--falcons-red);
+            color: white;
+            margin-left: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+        ::-webkit-scrollbar-thumb { background: var(--falcons-red); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c42040; }
+
+        /* Resources */
+        .resource-section { margin-bottom: 2rem; }
+        .resource-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--falcons-red);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--silver-dim);
+        }
+        .resource-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+        .resource-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--silver-dim);
+            border-left: 4px solid var(--falcons-red);
+            padding: 1.25rem;
+        }
+        .resource-card.recommended { border-left-color: var(--success); background: rgba(45, 106, 79, 0.1); }
+        .resource-card.caution { border-left-color: var(--warning); }
+        .resource-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        .resource-type { font-size: 0.75rem; color: var(--falcons-silver); margin-bottom: 0.75rem; }
+        .resource-rating {
+            display: inline-block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .resource-rating.excellent { background: var(--success); }
+        .resource-rating.good { background: var(--info); }
+        .resource-rating.mixed { background: var(--warning); color: var(--falcons-black); }
+        .resource-details { font-size: 0.8rem; color: var(--falcons-silver); line-height: 1.5; margin-bottom: 0.75rem; }
+        .resource-phone {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--falcons-red);
+            color: var(--falcons-white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            margin-top: 0.5rem;
+        }
+        .resource-phone:hover { background: var(--falcons-white); color: var(--falcons-red); }
+        .resource-note {
+            font-size: 0.75rem;
+            color: var(--warning);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Print styles */
+        @media print {
+            body { background: white; color: black; }
+            .sidebar, .context-panel, .mobile-bar, .header { display: none !important; }
+            .app { display: block; }
+            .main { display: block; }
+            .content { padding: 0; }
+            .panel { display: none !important; }
+            .panel#panel-export { display: block !important; }
+            .export-btn, label.export-btn { display: none; }
+            .export-preview {
+                background: white;
+                border: 1px solid #ccc;
+                color: black;
+                font-size: 12pt;
+                white-space: pre-wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-name">Rise Up</div>
+                <div class="brand-tagline">A Path Forward</div>
+            </div>
+
+            <div class="client-switcher">
+                <div class="nav-label">Who</div>
+                <button class="client-btn active" data-client="mom">Mom (65-66)</button>
+                <button class="client-btn" data-client="brother">Brother (38-39)</button>
+            </div>
+
+            <div class="nav-label">Navigate</div>
+            <button class="nav-btn active" data-panel="dashboard">Dashboard</button>
+            <button class="nav-btn" data-panel="actions">Actions</button>
+            <button class="nav-btn" data-panel="benefits">Benefits</button>
+            <button class="nav-btn" data-panel="documents">Documents</button>
+            <button class="nav-btn" data-panel="contacts">Contacts</button>
+            <button class="nav-btn" data-panel="log">Activity Log</button>
+            <button class="nav-btn" data-panel="resources">Resources</button>
+            <button class="nav-btn" data-panel="appointments">Appointments</button>
+            <button class="nav-btn" data-panel="profile">Profile</button>
+            <button class="nav-btn" data-panel="export">Export</button>
+
+            <div class="quick-calls">
+                <div class="nav-label">Call Now</div>
+                <a href="tel:211" class="call-btn">211 Helpline</a>
+                <a href="tel:6788438600" class="call-btn silver">Mercy Care</a>
+                <a href="tel:4046161000" class="call-btn silver">Grady Health</a>
+                <a href="tel:18007721213" class="call-btn silver">Social Security</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <header class="header">
+                <div>
+                    <div class="header-client" id="header-client">Mom</div>
+                    <h1 class="header-title display-font" id="header-title">Dashboard</h1>
+                </div>
+            </header>
+
+            <div class="content">
+                <!-- Dashboard -->
+                <div class="panel active" id="panel-dashboard">
+                    <div class="progress-section">
+                        <div class="progress-header">
+                            <span class="progress-label">Path to Stability</span>
+                            <span class="progress-value" id="progress-pct">0%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" id="progress-bar" style="width: 0%"></div></div>
+                    </div>
+
+                    <div class="dash-grid">
+                        <div class="dash-card">
+                            <div class="dash-card-title">Priority Actions <button class="add-btn" onclick="openActionModal()">+ Add</button></div>
+                            <div class="action-list" id="dash-actions"></div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-card-title">Benefits Status</div>
+                            <div id="dash-benefits"></div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-card-title">Documents Needed</div>
+                            <div id="dash-docs"></div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-card-title">Upcoming</div>
+                            <div id="dash-appointments"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="panel" id="panel-actions">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+                        <div class="nav-label" style="margin: 0;">All Actions</div>
+                        <button class="add-btn" onclick="openActionModal()">+ Add Action</button>
+                    </div>
+                    <div class="action-list" id="all-actions" style="max-height: none;"></div>
+                </div>
+
+                <!-- Benefits -->
+                <div class="panel" id="panel-benefits">
+                    <div class="nav-label" style="margin-bottom: 1.25rem;">Benefits Tracker</div>
+                    <div class="benefit-cards" id="benefits-cards"></div>
+                </div>
+
+                <!-- Documents -->
+                <div class="panel" id="panel-documents">
+                    <div class="nav-label" style="margin-bottom: 1.25rem;">Document Checklist</div>
+                    <p style="font-size: 0.85rem; color: var(--falcons-silver); margin-bottom: 1rem;">Click a document to cycle its status: Need → Applied → Have → Lost</p>
+                    <div class="doc-grid" id="doc-grid"></div>
+                </div>
+
+                <!-- Contacts -->
+                <div class="panel" id="panel-contacts">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+                        <div class="nav-label" style="margin: 0;">Key Contacts</div>
+                        <button class="add-btn" onclick="openContactModal()">+ Add Contact</button>
+                    </div>
+                    <div class="contact-cards" id="contact-cards"></div>
+                </div>
+
+                <!-- Activity Log -->
+                <div class="panel" id="panel-log">
+                    <div class="nav-label" style="margin-bottom: 1.25rem;">Activity Log</div>
+                    <div class="log-form">
+                        <select class="log-select" id="log-type">
+                            <option value="call">📞 Call</option>
+                            <option value="visit">🏠 Visit</option>
+                            <option value="update">📝 Update</option>
+                            <option value="win">🎉 Win!</option>
+                            <option value="issue">⚠️ Issue</option>
+                        </select>
+                        <input type="text" class="log-input" id="log-text" placeholder="What happened?">
+                        <button class="log-btn" onclick="addLogEntry()">Log It</button>
+                    </div>
+                    <div class="log-entries" id="log-entries"></div>
+                </div>
+
+                <!-- Profile -->
+                <div class="panel" id="panel-profile">
+                    <div class="nav-label" style="margin-bottom: 1.25rem;">Client Profile</div>
+                    <div class="profile-grid" id="profile-grid"></div>
+                </div>
+
+                <!-- Export -->
+                <div class="panel" id="panel-export">
+                    <div class="nav-label" style="margin-bottom: 1.25rem;">Export Status Report</div>
+                    <div style="display: flex; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+                        <button class="export-btn" style="margin-bottom: 0;" onclick="generateReport()">Generate Report</button>
+                        <button class="export-btn" style="margin-bottom: 0; background: var(--info);" onclick="downloadBackup()">Download Backup</button>
+                        <label class="export-btn" style="margin-bottom: 0; background: var(--falcons-silver); color: var(--falcons-black); cursor: pointer;">
+                            Restore Backup
+                            <input type="file" accept=".json" style="display:none;" onchange="restoreBackup(event)">
+                        </label>
+                    </div>
+                    <p style="font-size: 0.8rem; color: var(--falcons-silver); margin-bottom: 1rem;">Copy report to share with caseworkers. Download backup to save your data safely.</p>
+                    <div class="export-preview" id="export-preview">Click "Generate Report" to create a shareable status summary.</div>
+                </div>
+
+                <!-- Appointments -->
+                <div class="panel" id="panel-appointments">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+                        <div class="nav-label" style="margin: 0;">Upcoming Appointments</div>
+                        <button class="add-btn" onclick="openAppointmentModal()">+ Add</button>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--falcons-silver); margin-bottom: 1rem;">Track visits, phone calls, and deadlines. Never miss an important date.</p>
+                    <div id="appointments-list"></div>
+                    <div class="nav-label" style="margin-top: 2rem;">Past Appointments</div>
+                    <div id="past-appointments" style="opacity: 0.6;"></div>
+                </div>
+
+                <!-- Resources -->
+                <div class="panel" id="panel-resources">
+                    <div class="nav-label" style="margin-bottom: 1.25rem;">Vetted Atlanta Resources</div>
+                    <p style="font-size: 0.85rem; color: var(--falcons-silver); margin-bottom: 1.5rem;">These resources have been researched and vetted for quality. Tap any number to call directly.</p>
+
+                    <div class="resource-section">
+                        <div class="resource-header">Essential First Calls</div>
+                        <div class="resource-cards" id="essential-resources"></div>
+                    </div>
+
+                    <div class="resource-section">
+                        <div class="resource-header">Healthcare</div>
+                        <div class="resource-cards" id="healthcare-resources"></div>
+                    </div>
+
+                    <div class="resource-section">
+                        <div class="resource-header">Shelters</div>
+                        <div class="resource-cards" id="shelter-resources"></div>
+                    </div>
+
+                    <div class="resource-section">
+                        <div class="resource-header">Legal & Benefits Help</div>
+                        <div class="resource-cards" id="legal-resources"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Context Panel -->
+        <aside class="context-panel">
+            <div class="next-action" id="next-action-box">
+                <div class="next-action-label">Do This Now</div>
+                <div class="next-action-title" id="next-action-title">Loading...</div>
+                <div class="next-action-desc" id="next-action-desc"></div>
+                <a href="#" class="next-action-cta" id="next-action-cta">Call Now</a>
+            </div>
+
+            <div id="deadline-box"></div>
+
+            <div class="context-section">
+                <div class="context-title">Benefits Status</div>
+                <div id="context-benefits"></div>
+            </div>
+
+            <div class="context-section">
+                <div class="context-title">Recent Activity</div>
+                <div id="context-activity"></div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-bar">
+        <button class="mobile-bar-btn client-toggle" onclick="toggleMobileClient()"><span class="icon" id="mobile-client-icon">👩</span><span id="mobile-client-label">Mom</span></button>
+        <button class="mobile-bar-btn active" data-panel="dashboard"><span class="icon">◉</span>Home</button>
+        <button class="mobile-bar-btn" data-panel="actions"><span class="icon">✓</span>Actions</button>
+        <button class="mobile-bar-btn" data-panel="benefits"><span class="icon">◈</span>Benefits</button>
+        <button class="mobile-bar-btn" onclick="openMobileMenu()"><span class="icon">≡</span>More</button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu" onclick="closeMobileMenu()">
+        <div class="mobile-menu" onclick="event.stopPropagation()">
+            <div class="mobile-menu-title">More Options</div>
+            <button class="mobile-menu-btn" data-panel="documents" onclick="switchPanel('documents');closeMobileMenu()">📄 Documents</button>
+            <button class="mobile-menu-btn" data-panel="contacts" onclick="switchPanel('contacts');closeMobileMenu()">☎️ Contacts</button>
+            <button class="mobile-menu-btn" data-panel="log" onclick="switchPanel('log');closeMobileMenu()">📝 Activity Log</button>
+            <button class="mobile-menu-btn" data-panel="resources" onclick="switchPanel('resources');closeMobileMenu()">⭐ Resources</button>
+            <button class="mobile-menu-btn" data-panel="profile" onclick="switchPanel('profile');closeMobileMenu()">👤 Profile</button>
+            <button class="mobile-menu-btn" data-panel="export" onclick="switchPanel('export');closeMobileMenu()">📤 Export & Backup</button>
+            <button class="mobile-menu-btn" data-panel="appointments" onclick="switchPanel('appointments');closeMobileMenu()">📅 Appointments</button>
+            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--silver-dim);">
+                <a href="tel:211" class="mobile-menu-call">📞 Call 211 Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="modal-content"></div>
+    </div>
+
+    <div class="save-toast" id="save-toast">Saved</div>
+
+    <script>
+        // ============ DATA ============
+        const defaultData = {
+            mom: {
+                profile: { name: '', age: '65-66', location: 'Frontline Response Shelter', phone: '', disability: 'Leg amputation (~2 years)', passions: 'Lifelong Falcons fan - Rise Up!', skills: 'Android gaming, survival skills', support: 'Adult child advocating, son with her' },
+                actions: [
+                    { id: 'soar', title: 'Connect with SOAR Provider', desc: '60% approval rate vs 28% general', phone: '211', priority: 'urgent', done: false },
+                    { id: 'grady', title: 'Get Grady Card', desc: 'Free healthcare + amputee rehab unit', phone: '4046161000', priority: 'urgent', done: false },
+                    { id: 'presumptive', title: 'Request Presumptive SSI', desc: 'Amputation = immediate payments', phone: '18007721213', priority: 'urgent', done: false },
+                    { id: 'mercy', title: 'Contact Mercy Care', desc: 'Street medicine + new housing', phone: '6788438600', priority: 'week', done: false },
+                    { id: 'snap', title: 'Apply for SNAP', desc: 'Expedited = 7 days', phone: '4042065600', priority: 'week', done: false },
+                    { id: 'coord', title: 'Coordinated Entry', desc: 'Housing pathway', phone: '211', priority: 'week', done: false },
+                    { id: 'retirement', title: 'Check SS Retirement', desc: 'May be faster at 65+', phone: '18007721213', priority: 'month', done: false },
+                ],
+                benefits: {
+                    ssi: { status: 'urgent', date: '', case: '', denied: '', appealDeadline: '' },
+                    ssdi: { status: 'pending', date: '', case: '', denied: '', appealDeadline: '' },
+                    grady: { status: 'urgent', date: '' },
+                    medicaid: { status: 'pending', date: '', case: '' },
+                    snap: { status: 'pending', date: '', case: '' },
+                    coordEntry: { status: 'pending', date: '' },
+                    section8: { status: 'pending', date: '' },
+                    retirement: { status: 'pending', date: '', case: '' }
+                },
+                documents: { birth: 'need', sscard: 'need', id: 'need', medical: 'need', homeless: 'have', income: 'have', work: 'need' },
+                contacts: [{ id: 'shelter', role: 'Shelter Staff', name: '', org: 'Frontline Response', phone: '', lastContact: '' }],
+                log: [],
+                appointments: []
+            },
+            brother: {
+                profile: { name: '', age: '38-39', location: 'Frontline Response Shelter', phone: '', disability: '', passions: '', skills: '', support: 'Mom with him, sibling advocating' },
+                actions: [
+                    { id: 'b-id', title: 'Get State ID', desc: 'Required for most services', phone: null, priority: 'urgent', done: false },
+                    { id: 'b-soar', title: 'Check SOAR eligibility', desc: 'If has any disability', phone: '211', priority: 'week', done: false },
+                    { id: 'b-snap', title: 'Apply for SNAP', desc: 'Expedited = 7 days', phone: '4042065600', priority: 'urgent', done: false },
+                    { id: 'b-medicaid', title: 'Apply for Medicaid', desc: 'Healthcare coverage', phone: '4042065600', priority: 'week', done: false },
+                    { id: 'b-coord', title: 'Coordinated Entry', desc: 'Housing pathway', phone: '211', priority: 'urgent', done: false },
+                    { id: 'b-grady', title: 'Get Grady Card', desc: 'Free healthcare access', phone: '4046161000', priority: 'week', done: false },
+                    { id: 'b-job', title: 'Check job training', desc: 'Gateway Center has programs', phone: '4042156600', priority: 'month', done: false },
+                ],
+                benefits: { ssi: { status: 'pending', date: '', case: '', denied: '', appealDeadline: '' }, snap: { status: 'pending', date: '', case: '' }, coordEntry: { status: 'pending', date: '' }, medicaid: { status: 'pending', date: '', case: '' } },
+                documents: { birth: 'need', sscard: 'need', id: 'need', homeless: 'have' },
+                contacts: [],
+                log: [],
+                appointments: []
+            }
+        };
+
+        const benefitMeta = {
+            ssi: { name: 'SSI', full: 'Supplemental Security Income', canDeny: true },
+            ssdi: { name: 'SSDI', full: 'Social Security Disability', canDeny: true },
+            grady: { name: 'Grady Card', full: 'Free Healthcare', canDeny: false },
+            medicaid: { name: 'Medicaid', full: 'Healthcare Coverage', canDeny: true },
+            snap: { name: 'SNAP', full: 'Food Assistance', canDeny: true },
+            coordEntry: { name: 'Coord Entry', full: 'Housing Pathway', canDeny: false },
+            section8: { name: 'Section 8', full: 'Housing Voucher', canDeny: false },
+            retirement: { name: 'SS Retirement', full: 'Social Security', canDeny: true }
+        };
+
+        const docMeta = { birth: 'Birth Certificate', sscard: 'Social Security Card', id: 'State ID', medical: 'Medical Records', homeless: 'Homeless Letter', income: 'Proof of Income', work: 'Work History' };
+        const statusLabels = { urgent: 'Apply Now', pending: 'Not Started', progress: 'In Progress', denied: 'Denied', done: 'Approved' };
+
+        let currentClient = 'mom';
+        let data = JSON.parse(localStorage.getItem('riseUpData')) || JSON.parse(JSON.stringify(defaultData));
+
+        function save() {
+            localStorage.setItem('riseUpData', JSON.stringify(data));
+            document.getElementById('save-toast').classList.add('show');
+            setTimeout(() => document.getElementById('save-toast').classList.remove('show'), 1500);
+        }
+
+        function getClient() { return data[currentClient]; }
+
+        function switchClient(client) {
+            currentClient = client;
+            document.querySelectorAll('.client-btn').forEach(b => b.classList.toggle('active', b.dataset.client === client));
+            document.getElementById('header-client').textContent = client === 'mom' ? 'Mom' : 'Brother';
+            renderAll();
+        }
+
+        function switchPanel(panel) {
+            document.querySelectorAll('.nav-btn, .mobile-bar-btn').forEach(b => b.classList.toggle('active', b.dataset.panel === panel));
+            document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === `panel-${panel}`));
+            document.getElementById('header-title').textContent = panel.charAt(0).toUpperCase() + panel.slice(1);
+        }
+
+        function renderAll() { renderActions(); renderBenefits(); renderDocuments(); renderContacts(); renderLog(); renderProfile(); renderDashboard(); renderContext(); }
+
+        function renderActions() {
+            const client = getClient();
+            const renderDash = (el, items) => {
+                el.innerHTML = items.map(a => `
+                    <div class="action-item ${a.priority} ${a.done ? 'done' : ''}" onclick="toggleAction('${a.id}')">
+                        <div class="action-check">${a.done ? '✓' : ''}</div>
+                        <div class="action-content"><div class="action-title">${a.title}${a.priority === 'urgent' && !a.done ? '<span class="urgency-badge">Urgent</span>' : ''}</div><div class="action-meta">${a.desc}</div></div>
+                        ${a.phone ? `<a href="tel:${a.phone}" class="action-call" onclick="event.stopPropagation()">Call</a>` : ''}
+                    </div>
+                `).join('');
+            };
+            const renderFull = (el, items) => {
+                el.innerHTML = items.map(a => `
+                    <div class="action-item ${a.priority} ${a.done ? 'done' : ''}" onclick="toggleAction('${a.id}')">
+                        <div class="action-check">${a.done ? '✓' : ''}</div>
+                        <div class="action-content"><div class="action-title">${a.title}${a.priority === 'urgent' && !a.done ? '<span class="urgency-badge">Urgent</span>' : ''}</div><div class="action-meta">${a.desc}</div></div>
+                        ${a.phone ? `<a href="tel:${a.phone}" class="action-call" onclick="event.stopPropagation()">Call</a>` : ''}
+                        <button class="delete-btn" onclick="event.stopPropagation();deleteAction('${a.id}')">✕</button>
+                    </div>
+                `).join('');
+            };
+            renderDash(document.getElementById('dash-actions'), client.actions.filter(a => !a.done).slice(0, 4));
+            renderFull(document.getElementById('all-actions'), client.actions);
+        }
+
+        function toggleAction(id) { const a = getClient().actions.find(x => x.id === id); if (a) { a.done = !a.done; save(); renderAll(); } }
+
+        function renderBenefits() {
+            const client = getClient();
+            document.getElementById('benefits-cards').innerHTML = Object.entries(client.benefits).map(([key, b]) => {
+                const m = benefitMeta[key]; if (!m) return '';
+                const deadline = b.appealDeadline && new Date(b.appealDeadline) > new Date();
+                const days = deadline ? Math.ceil((new Date(b.appealDeadline) - new Date()) / 86400000) : null;
+                return `<div class="benefit-card ${deadline ? 'has-deadline' : ''}">
+                    <div class="benefit-header"><div><div class="benefit-name">${m.name}</div><div style="font-size:0.7rem;color:var(--falcons-silver)">${m.full}</div></div>${deadline ? `<div class="benefit-deadline">${days}d left</div>` : ''}</div>
+                    <div class="benefit-field"><div class="benefit-label">Status</div><select class="benefit-select" data-key="${key}" data-field="status" onchange="updateBenefit(this)"><option value="urgent" ${b.status==='urgent'?'selected':''}>Apply Now</option><option value="progress" ${b.status==='progress'?'selected':''}>In Progress</option><option value="pending" ${b.status==='pending'?'selected':''}>Pending</option>${m.canDeny?`<option value="denied" ${b.status==='denied'?'selected':''}>Denied</option>`:''}<option value="done" ${b.status==='done'?'selected':''}>Approved</option></select></div>
+                    <div class="benefit-field"><div class="benefit-label">Date Applied</div><input type="date" class="benefit-input" data-key="${key}" data-field="date" value="${b.date||''}" onchange="updateBenefit(this)"></div>
+                    ${m.canDeny?`<div class="benefit-field"><div class="benefit-label">Denied Date</div><input type="date" class="benefit-input" data-key="${key}" data-field="denied" value="${b.denied||''}" onchange="updateBenefit(this)"></div><div class="benefit-field"><div class="benefit-label">Appeal Deadline</div><input type="date" class="benefit-input" data-key="${key}" data-field="appealDeadline" value="${b.appealDeadline||''}" onchange="updateBenefit(this)"></div>`:''}
+                    <div class="benefit-field"><div class="benefit-label">Case #</div><input type="text" class="benefit-input" data-key="${key}" data-field="case" value="${b.case||''}" placeholder="Enter case #" onchange="updateBenefit(this)"></div>
+                </div>`;
+            }).join('');
+        }
+
+        function updateBenefit(el) {
+            const k = el.dataset.key, f = el.dataset.field;
+            getClient().benefits[k][f] = el.value;
+            if (f === 'denied' && el.value) {
+                const d = new Date(el.value); d.setDate(d.getDate() + 60);
+                getClient().benefits[k].appealDeadline = d.toISOString().split('T')[0];
+                getClient().benefits[k].status = 'denied';
+            }
+            save(); renderAll();
+        }
+
+        function renderDocuments() {
+            const client = getClient();
+            document.getElementById('doc-grid').innerHTML = Object.entries(client.documents).map(([k, s]) => `
+                <div class="doc-item ${s}" onclick="cycleDoc('${k}')">
+                    <div class="doc-check">${s==='have'?'✓':s==='applied'?'⏳':''}</div>
+                    <div><div class="doc-name">${docMeta[k]||k}</div><div class="doc-status">${s==='have'?'Have it':s==='applied'?'Applied':s==='need'?'Need to get':'Lost'}</div></div>
+                </div>
+            `).join('');
+        }
+
+        function cycleDoc(k) { const s = ['need','applied','have','lost']; const c = getClient().documents[k]; getClient().documents[k] = s[(s.indexOf(c)+1)%s.length]; save(); renderAll(); }
+
+        function renderContacts() {
+            document.getElementById('contact-cards').innerHTML = getClient().contacts.map((c,i) => `
+                <div class="contact-card">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                        <div class="contact-role">${c.role}</div>
+                        <button class="delete-btn" onclick="deleteContact(${i})">✕</button>
+                    </div>
+                    <input type="text" class="profile-input" value="${c.name}" placeholder="Name" style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;background:transparent;border:none;border-bottom:1px solid var(--silver-dim);padding:0.25rem 0;margin-bottom:0.5rem;" data-i="${i}" data-f="name" onchange="updateContact(this)">
+                    <div class="contact-org">${c.org}</div>
+                    <input type="tel" class="profile-input" value="${c.phone}" placeholder="Phone" style="margin-bottom:0.5rem;" data-i="${i}" data-f="phone" onchange="updateContact(this)">
+                    ${c.phone?`<a href="tel:${c.phone}" class="contact-phone">Call</a>`:''}
+                    <div class="contact-last">Last contact: <input type="date" style="background:transparent;border:none;color:var(--falcons-silver);font-size:0.75rem;" value="${c.lastContact||''}" data-i="${i}" data-f="lastContact" onchange="updateContact(this)"></div>
+                </div>
+            `).join('');
+        }
+
+        function updateContact(el) { getClient().contacts[parseInt(el.dataset.i)][el.dataset.f] = el.value; save(); }
+
+        function renderLog() {
+            document.getElementById('log-entries').innerHTML = getClient().log.map(l => `
+                <div class="log-entry ${l.type}"><div class="log-entry-header"><span class="log-entry-date">${l.date}</span><span class="log-entry-type">${l.type}</span></div><div class="log-entry-text">${l.text}</div></div>
+            `).join('') || '<div style="color:var(--falcons-silver);font-size:0.85rem;padding:1rem;">No activity logged yet. Start tracking calls and updates!</div>';
+        }
+
+        function addLogEntry() {
+            const t = document.getElementById('log-type').value, x = document.getElementById('log-text').value.trim();
+            if (!x) return;
+            getClient().log.unshift({ date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}), type: t, text: x });
+            document.getElementById('log-text').value = '';
+            save(); renderAll();
+        }
+
+        function renderProfile() {
+            const p = getClient().profile;
+            document.getElementById('profile-grid').innerHTML = `
+                <div class="profile-section"><div class="profile-section-title">Basic Info</div>${['name','age','location','phone','disability'].map(f=>`<div class="profile-field"><div class="profile-label">${f}</div><input type="text" class="profile-input" value="${p[f]||''}" data-f="${f}" onchange="updateProfile(this)"></div>`).join('')}</div>
+                <div class="profile-section"><div class="profile-section-title">Strengths</div>${['passions','skills','support'].map(f=>`<div class="profile-field"><div class="profile-label">${f}</div><textarea class="profile-textarea" data-f="${f}" onchange="updateProfile(this)">${p[f]||''}</textarea></div>`).join('')}</div>
+            `;
+        }
+
+        function updateProfile(el) { getClient().profile[el.dataset.f] = el.value; save(); }
+
+        function renderDashboard() {
+            const c = getClient();
+            const done = c.actions.filter(a=>a.done).length, total = c.actions.length, pct = total ? Math.round((done/total)*100) : 0;
+            document.getElementById('progress-pct').textContent = `${pct}%`;
+            document.getElementById('progress-bar').style.width = `${pct}%`;
+
+            // Benefits with urgency
+            document.getElementById('dash-benefits').innerHTML = Object.entries(c.benefits).slice(0,5).map(([k,b])=>{
+                const m=benefitMeta[k];
+                if(!m) return '';
+                const hasDeadline = b.appealDeadline && new Date(b.appealDeadline) > new Date();
+                const daysLeft = hasDeadline ? Math.ceil((new Date(b.appealDeadline) - new Date()) / 86400000) : null;
+                return `<div class="status-row"><span>${m.name}${hasDeadline && daysLeft <= 14 ? '<span class="urgency-badge" style="background:var(--warning);color:var(--falcons-black)">'+daysLeft+'d!</span>':''}</span><span class="status-badge ${b.status}">${statusLabels[b.status]||b.status}</span></div>`;
+            }).join('');
+
+            const docs = Object.entries(c.documents).filter(([,v])=>v==='need');
+            document.getElementById('dash-docs').innerHTML = docs.length ? docs.map(([k])=>`<div style="font-size:0.85rem;padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.05)">${docMeta[k]||k}</div>`).join('') : '<div style="color:var(--success);font-size:0.85rem">All documents collected!</div>';
+
+            // Upcoming appointments
+            const now = new Date(); now.setHours(0,0,0,0);
+            const appts = (c.appointments||[]).filter(a=>!a.done&&new Date(a.date)>=now).sort((a,b)=>new Date(a.date)-new Date(b.date)).slice(0,3);
+            document.getElementById('dash-appointments').innerHTML = appts.length ? appts.map(a=>{
+                const d = new Date(a.date);
+                const daysAway = Math.ceil((d - now) / 86400000);
+                const isToday = daysAway === 0;
+                const isSoon = daysAway <= 3;
+                return `<div style="font-size:0.85rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);${isToday?'color:var(--falcons-red);font-weight:600;':''}">
+                    ${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})} - ${a.title}${isToday?'<span class="urgency-badge">Today!</span>':isSoon?'<span class="urgency-badge" style="background:var(--warning);color:var(--falcons-black)">'+daysAway+'d</span>':''}
+                </div>`;
+            }).join('') : '<div style="color:var(--falcons-silver);font-size:0.85rem">No upcoming appointments<br><a href="#" onclick="switchPanel(\'appointments\');return false;" style="color:var(--falcons-red);">+ Add one</a></div>';
+        }
+
+        function renderContext() {
+            const c = getClient();
+            const next = c.actions.find(a=>!a.done);
+            if (next) {
+                document.getElementById('next-action-title').textContent = next.title;
+                document.getElementById('next-action-desc').textContent = next.desc;
+                const cta = document.getElementById('next-action-cta');
+                if (next.phone) { cta.href = `tel:${next.phone}`; cta.textContent = 'Call Now'; cta.style.display = 'inline-block'; }
+                else { cta.style.display = 'none'; }
+            }
+            let closest = null, closestDays = Infinity, closestName = '';
+            Object.entries(c.benefits).forEach(([k,b])=>{if(b.appealDeadline){const d=Math.ceil((new Date(b.appealDeadline)-new Date())/86400000);if(d>0&&d<closestDays){closestDays=d;closest=b.appealDeadline;closestName=benefitMeta[k]?.name||k;}}});
+            document.getElementById('deadline-box').innerHTML = closest ? `<div class="deadline-alert ${closestDays>14?'safe':''}"><div class="deadline-days">${closestDays}</div><div class="deadline-text">days to appeal<br><strong>${closestName}</strong></div></div>` : '<div class="deadline-none">No deadlines pending</div>';
+            document.getElementById('context-benefits').innerHTML = Object.entries(c.benefits).slice(0,5).map(([k,b])=>{const m=benefitMeta[k];return m?`<div class="status-row"><span>${m.name}</span><span class="status-badge ${b.status}">${statusLabels[b.status]||b.status}</span></div>`:''}).join('');
+            document.getElementById('context-activity').innerHTML = c.log.slice(0,3).map(l=>`<div class="activity-item"><div class="activity-date">${l.date}</div><div class="activity-text">${l.text}</div></div>`).join('') || '<div style="color:var(--falcons-silver);font-size:0.8rem">No activity</div>';
+        }
+
+        function openModal(c) { document.getElementById('modal-content').innerHTML = c; document.getElementById('modal-overlay').classList.add('show'); }
+        function closeModal() { document.getElementById('modal-overlay').classList.remove('show'); }
+
+        function openActionModal() {
+            openModal(`<div class="modal-title">Add Action</div>
+                <div class="modal-field"><div class="modal-label">Title</div><input type="text" class="modal-input" id="new-action-title"></div>
+                <div class="modal-field"><div class="modal-label">Description</div><input type="text" class="modal-input" id="new-action-desc"></div>
+                <div class="modal-field"><div class="modal-label">Phone (optional)</div><input type="tel" class="modal-input" id="new-action-phone"></div>
+                <div class="modal-field"><div class="modal-label">Priority</div><select class="modal-input" id="new-action-priority"><option value="urgent">Urgent</option><option value="week">This Week</option><option value="month">This Month</option></select></div>
+                <div class="modal-actions"><button class="modal-btn secondary" onclick="closeModal()">Cancel</button><button class="modal-btn primary" onclick="addAction()">Add</button></div>`);
+        }
+
+        function addAction() {
+            const t = document.getElementById('new-action-title').value.trim(); if (!t) return;
+            getClient().actions.push({ id: 'c-'+Date.now(), title: t, desc: document.getElementById('new-action-desc').value.trim(), phone: document.getElementById('new-action-phone').value.trim()||null, priority: document.getElementById('new-action-priority').value, done: false });
+            closeModal(); save(); renderAll();
+        }
+
+        function openContactModal() {
+            openModal(`<div class="modal-title">Add Contact</div>
+                <div class="modal-field"><div class="modal-label">Role</div><input type="text" class="modal-input" id="new-contact-role" placeholder="e.g. SOAR Worker"></div>
+                <div class="modal-field"><div class="modal-label">Name</div><input type="text" class="modal-input" id="new-contact-name"></div>
+                <div class="modal-field"><div class="modal-label">Organization</div><input type="text" class="modal-input" id="new-contact-org"></div>
+                <div class="modal-field"><div class="modal-label">Phone</div><input type="tel" class="modal-input" id="new-contact-phone"></div>
+                <div class="modal-actions"><button class="modal-btn secondary" onclick="closeModal()">Cancel</button><button class="modal-btn primary" onclick="addContact()">Add</button></div>`);
+        }
+
+        function addContact() {
+            getClient().contacts.push({ id: 'ct-'+Date.now(), role: document.getElementById('new-contact-role').value.trim(), name: document.getElementById('new-contact-name').value.trim(), org: document.getElementById('new-contact-org').value.trim(), phone: document.getElementById('new-contact-phone').value.trim(), lastContact: '' });
+            closeModal(); save(); renderAll();
+        }
+
+        function generateReport() {
+            const c = getClient(), n = currentClient === 'mom' ? 'Mom' : 'Brother', p = c.profile;
+            let r = `RISE UP - STATUS REPORT
+${'='.repeat(30)}
+Client: ${n}${p.name ? ' (' + p.name + ')' : ''}
+Date: ${new Date().toLocaleDateString()}
+
+CLIENT INFO
+-----------
+Age: ${p.age || 'Unknown'}
+Location: ${p.location || 'Unknown'}
+${p.disability ? 'Disability: ' + p.disability + '\n' : ''}${p.phone ? 'Phone: ' + p.phone + '\n' : ''}
+PROGRESS
+--------
+${c.actions.filter(a=>a.done).length}/${c.actions.length} actions complete
+
+BENEFITS STATUS
+---------------
+`;
+            Object.entries(c.benefits).forEach(([k,b])=>{const m=benefitMeta[k];if(m)r+=`${m.name}: ${statusLabels[b.status]||b.status}${b.case?' (Case #'+b.case+')':''}${b.appealDeadline?` ⚠️ Appeal by ${b.appealDeadline}`:''}\n`;});
+            r+=`\nDOCUMENTS\n---------\n`;
+            Object.entries(c.documents).forEach(([k,s])=>{r+=`[${s==='have'?'✓':s==='applied'?'⏳':'✗'}] ${docMeta[k]||k}: ${s}\n`;});
+            r+=`\nUPCOMING APPOINTMENTS\n---------------------\n`;
+            const appts = (c.appointments||[]).filter(a=>!a.done&&new Date(a.date)>=new Date()).sort((a,b)=>new Date(a.date)-new Date(b.date)).slice(0,3);
+            if(appts.length){appts.forEach(a=>{r+=`${a.date} ${a.time||''} - ${a.title}${a.location?' @ '+a.location:''}\n`;});}else{r+=`No upcoming appointments\n`;}
+            r+=`\nNEXT ACTIONS\n------------\n`;
+            c.actions.filter(a=>!a.done).slice(0,5).forEach((a,i)=>{r+=`${i+1}. ${a.title}${a.priority==='urgent'?' ⚠️ URGENT':''}${a.phone?` (Call: ${formatPhone(a.phone)})`:''}\n`;});
+            r+=`\nKEY CONTACTS\n------------\n`;
+            c.contacts.filter(ct=>ct.name||ct.phone).slice(0,5).forEach(ct=>{r+=`${ct.role}: ${ct.name||'(no name)'}${ct.phone?' - '+formatPhone(ct.phone):''} (${ct.org})\n`;});
+            r+=`\nRECENT ACTIVITY\n---------------\n`;
+            c.log.slice(0,5).forEach(l=>{r+=`[${l.date}] ${l.type.toUpperCase()}: ${l.text}\n`;});
+            r+=`\n${'='.repeat(30)}\nGenerated by Rise Up | ${new Date().toLocaleString()}`;
+            document.getElementById('export-preview').textContent = r;
+        }
+
+        document.querySelectorAll('.nav-btn, .mobile-bar-btn').forEach(b => b.addEventListener('click', () => switchPanel(b.dataset.panel)));
+        document.querySelectorAll('.client-btn').forEach(b => b.addEventListener('click', () => switchClient(b.dataset.client)));
+        document.getElementById('modal-overlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+
+        // ============ RESOURCES DATA ============
+        const resources = {
+            essential: [
+                { name: '211 Helpline', type: 'Central Referral Hub', phone: '211', rating: 'excellent', recommended: true, details: 'First call for any need. Connects to SOAR providers and Coordinated Entry. Available 24/7.' },
+                { name: 'SOAR Program', type: 'Benefits Application Help', phone: '211', rating: 'excellent', recommended: true, details: '60%+ approval rate vs 28% general. Free specialized help for homeless disability benefits. Ask 211 for SOAR providers.' },
+                { name: 'Social Security', type: 'SSI/SSDI Applications', phone: '18007721213', rating: 'good', details: 'Request Presumptive SSI for amputation - immediate payments while application processes.' }
+            ],
+            healthcare: [
+                { name: 'Mercy Care Atlanta', type: 'Homeless Healthcare (Gold Standard)', phone: '6788438600', rating: 'excellent', recommended: true, details: 'Atlanta\'s only Healthcare for Homeless. Street medicine team goes TO shelters. New McAuley Station housing (170 units). Sliding scale fees.' },
+                { name: 'Grady Health System', type: 'Free Hospital Care', phone: '4046161000', rating: 'good', recommended: true, details: 'Get Grady Card = FREE care. NEW 24-bed rehab unit for amputees (Aug 2024). Only Level 1 trauma center. Go early, expect wait.' },
+                { name: 'Mental Health Crisis', type: '24/7 Crisis Line', phone: '18007154225', rating: 'good', details: 'Georgia Crisis & Access Line. 24/7 mental health support and crisis intervention.' }
+            ],
+            shelters: [
+                { name: 'Gateway Center', type: 'Emergency Shelter + SOAR Hub', phone: '4042156600', rating: 'mixed', caution: true, details: 'Has SOAR-trained staff on site. Main hub for Coordinated Entry. Can be chaotic, long lines. Better to go with advocate.', note: 'Reports of rudeness toward women. Use for SOAR services specifically.' },
+                { name: 'Atlanta Mission', type: 'Men + Women/Children Shelters', phone: '4045884000', rating: 'good', details: 'Largest homeless services in Atlanta since 1938. My Sister\'s House serves women. 4-star Charity Navigator rating.' },
+                { name: 'City of Refuge', type: 'Comprehensive Campus', phone: '4048751804', rating: 'good', details: '8-acre campus with housing, health, jobs. Excellent resident reviews. Very strict rules - no electronics 30 days. Hard to get in.' }
+            ],
+            legal: [
+                { name: 'Atlanta Legal Aid', type: 'Free Legal Help', phone: '4045245811', rating: 'good', details: 'Free for low-income. Helps with benefits appeals, housing issues, family law. High demand - may have waitlist.' },
+                { name: 'Disability Link', type: 'Disability Advocacy', phone: '4046878890', rating: 'good', details: 'Center for Independent Living. Peer support for navigating disability services and systems.' },
+                { name: 'Fulton County DFCS', type: 'SNAP & Medicaid', phone: '4042065600', rating: 'good', details: 'Expedited SNAP = 7 days. Georgia Gateway online portal: gateway.ga.gov' }
+            ]
+        };
+
+        function formatPhone(p) {
+            if (!p) return '';
+            const s = p.replace(/\D/g, '');
+            if (s.length === 3) return s;
+            if (s.length === 10) return `(${s.slice(0,3)}) ${s.slice(3,6)}-${s.slice(6)}`;
+            if (s.length === 11) return `${s[0]}-${s.slice(1,4)}-${s.slice(4,7)}-${s.slice(7)}`;
+            return p;
+        }
+
+        function renderResources() {
+            const renderSection = (id, items) => {
+                document.getElementById(id).innerHTML = items.map(r => `
+                    <div class="resource-card ${r.recommended ? 'recommended' : ''} ${r.caution ? 'caution' : ''}">
+                        <div class="resource-name">${r.name}</div>
+                        <div class="resource-type">${r.type}</div>
+                        <div class="resource-rating ${r.rating}">${r.rating}</div>
+                        <div class="resource-details">${r.details}</div>
+                        ${r.phone ? `<a href="tel:${r.phone}" class="resource-phone">Call ${formatPhone(r.phone)}</a>` : ''}
+                        ${r.note ? `<div class="resource-note">⚠️ ${r.note}</div>` : ''}
+                    </div>
+                `).join('');
+            };
+            renderSection('essential-resources', resources.essential);
+            renderSection('healthcare-resources', resources.healthcare);
+            renderSection('shelter-resources', resources.shelters);
+            renderSection('legal-resources', resources.legal);
+        }
+
+        function downloadBackup() {
+            const backup = {
+                version: 1,
+                exported: new Date().toISOString(),
+                data: data
+            };
+            const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `rise-up-backup-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function restoreBackup(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const backup = JSON.parse(e.target.result);
+                    if (backup.data && (backup.data.mom || backup.data.brother)) {
+                        data = backup.data;
+                        save();
+                        renderAll();
+                        alert('Backup restored successfully!');
+                    } else {
+                        alert('Invalid backup file format.');
+                    }
+                } catch (err) {
+                    alert('Could not read backup file.');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // ============ MOBILE FUNCTIONS ============
+        function toggleMobileClient() {
+            const newClient = currentClient === 'mom' ? 'brother' : 'mom';
+            switchClient(newClient);
+            document.getElementById('mobile-client-icon').textContent = newClient === 'mom' ? '👩' : '👨';
+            document.getElementById('mobile-client-label').textContent = newClient === 'mom' ? 'Mom' : 'Bro';
+        }
+
+        function openMobileMenu() {
+            document.getElementById('mobile-menu').classList.add('show');
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobile-menu').classList.remove('show');
+        }
+
+        // ============ APPOINTMENTS ============
+        function renderAppointments() {
+            const client = getClient();
+            if (!client.appointments) client.appointments = [];
+
+            const now = new Date();
+            now.setHours(0,0,0,0);
+
+            const upcoming = client.appointments
+                .filter(a => !a.done && new Date(a.date) >= now)
+                .sort((a,b) => new Date(a.date) - new Date(b.date));
+
+            const past = client.appointments
+                .filter(a => a.done || new Date(a.date) < now)
+                .sort((a,b) => new Date(b.date) - new Date(a.date))
+                .slice(0, 5);
+
+            document.getElementById('appointments-list').innerHTML = upcoming.length ? upcoming.map(a => {
+                const d = new Date(a.date);
+                const daysAway = Math.ceil((d - now) / 86400000);
+                const isToday = daysAway === 0;
+                const isSoon = daysAway <= 3 && daysAway > 0;
+                return `
+                <div class="appt-card ${isToday ? 'today' : ''} ${isSoon ? 'soon' : ''}">
+                    <div class="appt-date">
+                        <div class="appt-day">${d.getDate()}</div>
+                        <div class="appt-month">${d.toLocaleString('en-US', {month: 'short'})}</div>
+                    </div>
+                    <div class="appt-details">
+                        <div class="appt-title">${a.title}${isToday ? '<span class="urgency-badge">Today!</span>' : ''}${isSoon ? '<span class="urgency-badge" style="background:var(--warning);color:var(--falcons-black)">'+daysAway+'d</span>' : ''}</div>
+                        <div class="appt-meta">${a.time || 'Time TBD'} • ${a.type || 'Appointment'}</div>
+                        ${a.location ? `<div class="appt-location">📍 ${a.location}</div>` : ''}
+                        ${a.notes ? `<div class="appt-location">📝 ${a.notes}</div>` : ''}
+                    </div>
+                    <div class="appt-actions">
+                        <button class="appt-done" onclick="completeAppointment('${a.id}')">Done</button>
+                        <button class="appt-delete" onclick="deleteAppointment('${a.id}')">✕</button>
+                    </div>
+                </div>`;
+            }).join('') : '<div style="color:var(--falcons-silver);padding:1rem;text-align:center;">No upcoming appointments. Add one to stay on track!</div>';
+
+            document.getElementById('past-appointments').innerHTML = past.length ? past.map(a => {
+                const d = new Date(a.date);
+                return `<div class="appt-card" style="opacity:0.5;border-left-color:var(--success);">
+                    <div class="appt-date"><div class="appt-day" style="color:var(--success)">${d.getDate()}</div><div class="appt-month">${d.toLocaleString('en-US', {month: 'short'})}</div></div>
+                    <div class="appt-details"><div class="appt-title">${a.title}</div><div class="appt-meta">${a.type || 'Appointment'} - Completed</div></div>
+                </div>`;
+            }).join('') : '';
+        }
+
+        function openAppointmentModal() {
+            openModal(`<div class="modal-title">Add Appointment</div>
+                <div class="modal-field"><div class="modal-label">What</div><input type="text" class="modal-input" id="new-appt-title" placeholder="e.g., Grady Card appointment"></div>
+                <div class="modal-field"><div class="modal-label">Date</div><input type="date" class="modal-input" id="new-appt-date"></div>
+                <div class="modal-field"><div class="modal-label">Time</div><input type="time" class="modal-input" id="new-appt-time"></div>
+                <div class="modal-field"><div class="modal-label">Type</div><select class="modal-input" id="new-appt-type">
+                    <option value="In-Person Visit">In-Person Visit</option>
+                    <option value="Phone Call">Phone Call</option>
+                    <option value="Deadline">Deadline</option>
+                    <option value="Follow-up">Follow-up</option>
+                </select></div>
+                <div class="modal-field"><div class="modal-label">Location (optional)</div><input type="text" class="modal-input" id="new-appt-location" placeholder="Address or phone number"></div>
+                <div class="modal-field"><div class="modal-label">Notes (optional)</div><input type="text" class="modal-input" id="new-appt-notes" placeholder="What to bring, who to ask for..."></div>
+                <div class="modal-actions"><button class="modal-btn secondary" onclick="closeModal()">Cancel</button><button class="modal-btn primary" onclick="addAppointment()">Add</button></div>`);
+        }
+
+        function addAppointment() {
+            const title = document.getElementById('new-appt-title').value.trim();
+            const date = document.getElementById('new-appt-date').value;
+            if (!title || !date) return alert('Please enter a title and date');
+
+            if (!getClient().appointments) getClient().appointments = [];
+            getClient().appointments.push({
+                id: 'apt-' + Date.now(),
+                title: title,
+                date: date,
+                time: document.getElementById('new-appt-time').value || '',
+                type: document.getElementById('new-appt-type').value,
+                location: document.getElementById('new-appt-location').value.trim(),
+                notes: document.getElementById('new-appt-notes').value.trim(),
+                done: false
+            });
+            closeModal();
+            save();
+            renderAppointments();
+        }
+
+        function completeAppointment(id) {
+            const a = getClient().appointments.find(x => x.id === id);
+            if (a) { a.done = true; save(); renderAppointments(); }
+        }
+
+        function deleteAppointment(id) {
+            if (!confirm('Delete this appointment?')) return;
+            getClient().appointments = getClient().appointments.filter(x => x.id !== id);
+            save();
+            renderAppointments();
+        }
+
+        // ============ DELETE FUNCTIONS ============
+        function deleteAction(id) {
+            if (!confirm('Delete this action?')) return;
+            getClient().actions = getClient().actions.filter(x => x.id !== id);
+            save();
+            renderAll();
+        }
+
+        function deleteContact(i) {
+            if (!confirm('Delete this contact?')) return;
+            getClient().contacts.splice(i, 1);
+            save();
+            renderContacts();
+        }
+
+        // Override renderAll to include appointments
+        const originalRenderAll = renderAll;
+        renderAll = function() {
+            originalRenderAll();
+            renderAppointments();
+        };
+
+        renderResources();
+        renderAll();
+    </script>
+</body>
+</html>
