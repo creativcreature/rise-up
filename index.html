@@ -1018,6 +1018,213 @@
             font-style: italic;
         }
 
+        /* ============ FOCUS MODE ============ */
+        .focus-mode .app { display: none !important; }
+        .focus-mode .mobile-bar { display: none !important; }
+        .focus-mode .mobile-menu-overlay { display: none !important; }
+        .focus-mode .focus-view { display: flex !important; }
+
+        .focus-view {
+            display: none;
+            flex-direction: column;
+            min-height: 100vh;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            padding-bottom: 100px;
+        }
+
+        .focus-header {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-bottom: 3px solid var(--falcons-red);
+            margin-bottom: 2rem;
+        }
+        .focus-brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--falcons-red);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 40px var(--red-glow);
+        }
+        .focus-greeting {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+            color: var(--falcons-silver);
+        }
+
+        .focus-main { flex: 1; }
+
+        .focus-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--falcons-red);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .focus-card {
+            background: linear-gradient(135deg, rgba(167, 25, 48, 0.2) 0%, rgba(0,0,0,0.4) 100%);
+            border: 2px solid var(--falcons-red);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 40px var(--red-glow);
+        }
+        .focus-card-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+        .focus-card-desc {
+            font-size: 1.1rem;
+            color: var(--falcons-silver);
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+        .focus-call-btn {
+            display: block;
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--falcons-red);
+            color: var(--falcons-white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .focus-call-btn:hover, .focus-call-btn:active {
+            background: var(--falcons-white);
+            color: var(--falcons-red);
+            transform: scale(1.02);
+        }
+        .focus-done-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--success);
+            color: var(--falcons-white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .focus-done-btn:hover { opacity: 0.9; }
+
+        .focus-appointment {
+            background: rgba(255,255,255,0.05);
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+        .focus-appointment-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--warning);
+            margin-bottom: 0.25rem;
+        }
+        .focus-appointment-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .focus-appointment-date {
+            font-size: 0.9rem;
+            color: var(--falcons-silver);
+        }
+
+        .focus-quick-calls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, transparent 0%, #0a0a0a 20%);
+            padding: 1rem;
+            padding-top: 2rem;
+        }
+        .focus-quick-calls-inner {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .focus-quick-btn {
+            flex: 1;
+            padding: 0.85rem 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--silver-dim);
+            color: var(--falcons-white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 6px;
+        }
+        .focus-quick-btn:hover, .focus-quick-btn:active {
+            background: var(--falcons-red);
+            border-color: var(--falcons-red);
+        }
+        .focus-quick-btn .icon {
+            display: block;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .focus-all-done {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .focus-all-done-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        .focus-all-done-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            color: var(--success);
+            margin-bottom: 0.5rem;
+        }
+        .focus-all-done-text {
+            color: var(--falcons-silver);
+            font-size: 1.1rem;
+        }
+
+        .focus-switch {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--silver-dim);
+        }
+        .focus-switch-link {
+            color: var(--falcons-silver);
+            font-size: 0.8rem;
+            text-decoration: none;
+            opacity: 0.5;
+        }
+
         /* Print styles */
         @media print {
             body { background: white; color: black; }
@@ -1279,7 +1486,54 @@
 
     <div class="save-toast" id="save-toast">Saved</div>
 
+    <!-- FOCUS VIEW -->
+    <div class="focus-view" id="focus-view">
+        <div class="focus-header">
+            <div class="focus-brand">Rise Up</div>
+            <div class="focus-greeting" id="focus-greeting">Hey Mom</div>
+        </div>
+
+        <div class="focus-main">
+            <div class="focus-label">Your One Thing Right Now</div>
+            <div class="focus-card" id="focus-card">
+                <div class="focus-card-title" id="focus-title">Loading...</div>
+                <div class="focus-card-desc" id="focus-desc"></div>
+                <a href="#" class="focus-call-btn" id="focus-call-btn">Call Now</a>
+                <button class="focus-done-btn" id="focus-done-btn" onclick="focusMarkDone()">✓ I Did This</button>
+            </div>
+
+            <div class="focus-appointment" id="focus-appointment" style="display:none;">
+                <div class="focus-appointment-label">Coming Up</div>
+                <div class="focus-appointment-title" id="focus-appt-title"></div>
+                <div class="focus-appointment-date" id="focus-appt-date"></div>
+            </div>
+        </div>
+
+        <div class="focus-quick-calls">
+            <div class="focus-quick-calls-inner">
+                <a href="tel:211" class="focus-quick-btn"><span class="icon">🆘</span>211</a>
+                <a href="tel:6788438600" class="focus-quick-btn"><span class="icon">❤️</span>Mercy</a>
+                <a href="tel:4046161000" class="focus-quick-btn"><span class="icon">🏥</span>Grady</a>
+                <a href="tel:18007721213" class="focus-quick-btn"><span class="icon">📋</span>SSA</a>
+            </div>
+        </div>
+
+        <div class="focus-switch">
+            <a href="?" class="focus-switch-link" id="focus-switch-link">Switch to full view</a>
+        </div>
+    </div>
+
     <script>
+        // ============ FOCUS MODE DETECTION ============
+        const urlParams = new URLSearchParams(window.location.search);
+        const focusMode = urlParams.get('focus');
+        let focusClient = null;
+
+        if (focusMode === 'mom' || focusMode === 'brother') {
+            document.body.classList.add('focus-mode');
+            focusClient = focusMode;
+        }
+
         // ============ DATA ============
         const defaultData = {
             mom: {
@@ -1823,8 +2077,103 @@ BENEFITS STATUS
             renderAppointments();
         };
 
+        // ============ FOCUS MODE ============
+        function renderFocusView() {
+            if (!focusClient) return;
+
+            // Set the client
+            currentClient = focusClient;
+            const client = getClient();
+            const name = focusClient === 'mom' ? 'Mom' : 'Brother';
+
+            // Update greeting
+            document.getElementById('focus-greeting').textContent = `Hey ${name} 👋`;
+
+            // Find next undone action
+            const nextAction = client.actions.find(a => !a.done);
+
+            if (nextAction) {
+                document.getElementById('focus-title').textContent = nextAction.title;
+                document.getElementById('focus-desc').textContent = nextAction.desc;
+
+                const callBtn = document.getElementById('focus-call-btn');
+                if (nextAction.phone) {
+                    callBtn.href = `tel:${nextAction.phone}`;
+                    callBtn.textContent = `📞 Call ${formatPhone(nextAction.phone)}`;
+                    callBtn.style.display = 'block';
+                } else {
+                    callBtn.style.display = 'none';
+                }
+
+                document.getElementById('focus-done-btn').style.display = 'block';
+                document.getElementById('focus-card').innerHTML = `
+                    <div class="focus-card-title">${nextAction.title}</div>
+                    <div class="focus-card-desc">${nextAction.desc}</div>
+                    ${nextAction.phone ? `<a href="tel:${nextAction.phone}" class="focus-call-btn">📞 Call ${formatPhone(nextAction.phone)}</a>` : ''}
+                    <button class="focus-done-btn" onclick="focusMarkDone()">✓ I Did This</button>
+                `;
+            } else {
+                // All done!
+                document.getElementById('focus-card').innerHTML = `
+                    <div class="focus-all-done">
+                        <div class="focus-all-done-icon">🎉</div>
+                        <div class="focus-all-done-title">All Done!</div>
+                        <div class="focus-all-done-text">You've completed all your tasks.<br>Rise Up! You're making progress.</div>
+                    </div>
+                `;
+            }
+
+            // Check for upcoming appointment
+            const now = new Date();
+            now.setHours(0,0,0,0);
+            const appts = (client.appointments || [])
+                .filter(a => !a.done && new Date(a.date) >= now)
+                .sort((a,b) => new Date(a.date) - new Date(b.date));
+
+            if (appts.length > 0) {
+                const next = appts[0];
+                const d = new Date(next.date);
+                const daysAway = Math.ceil((d - now) / 86400000);
+                const dateStr = daysAway === 0 ? 'TODAY!' : daysAway === 1 ? 'Tomorrow' : d.toLocaleDateString('en-US', {weekday: 'long', month: 'short', day: 'numeric'});
+
+                document.getElementById('focus-appointment').style.display = 'block';
+                document.getElementById('focus-appt-title').textContent = next.title;
+                document.getElementById('focus-appt-date').textContent = `${dateStr}${next.time ? ' at ' + next.time : ''}${next.location ? ' • ' + next.location : ''}`;
+
+                // Make it urgent if today
+                if (daysAway === 0) {
+                    document.getElementById('focus-appointment').style.borderLeftColor = 'var(--falcons-red)';
+                    document.getElementById('focus-appointment').style.background = 'rgba(167, 25, 48, 0.2)';
+                }
+            } else {
+                document.getElementById('focus-appointment').style.display = 'none';
+            }
+        }
+
+        function focusMarkDone() {
+            const client = getClient();
+            const nextAction = client.actions.find(a => !a.done);
+            if (nextAction) {
+                nextAction.done = true;
+                // Auto-log it
+                if (!client.log) client.log = [];
+                client.log.unshift({
+                    date: new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'}),
+                    type: 'update',
+                    text: `Completed: ${nextAction.title}`
+                });
+                save();
+                renderFocusView();
+            }
+        }
+
+        // Initialize
         renderResources();
-        renderAll();
+        if (focusClient) {
+            renderFocusView();
+        } else {
+            renderAll();
+        }
     </script>
 </body>
 </html>
